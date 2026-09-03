@@ -56,4 +56,4 @@ channels:
         - "YOU'LL SMILE"
 
     slot_publish_times_utc:               # this IS the cron fire time
-      1: "22:00"                          # 6 PM US Eastern (US prime)  = 3:30 AM IST
+      1: "22:30"                          # 6:30 PM US Eastern (US evening prime) = 4:00 AM IST
