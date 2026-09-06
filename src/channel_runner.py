@@ -56,12 +56,6 @@ def pick_candidates(channel: Channel, slot: int, entries: list[dict],
         cutoff = cutoff.replace(tzinfo=dt.timezone.utc).timestamp()
         avail = [e for e in avail if (e["timestamp"] or 0) >= cutoff]
 
-    # duration window (long-form channels skip < min; everyone skips > max)
-    lo = getattr(channel, "min_video_seconds", 0) or 0
-    hi = getattr(channel, "max_video_seconds", 3600) or 3600
-    avail = [e for e in avail
-             if not e.get("duration") or lo <= e["duration"] <= hi]
-
     newest = sorted(avail, key=lambda e: e["timestamp"] or 0, reverse=True)
     most_viewed = sorted(avail, key=lambda e: e["view_count"] or 0, reverse=True)
 
@@ -84,8 +78,6 @@ def pick_candidates(channel: Channel, slot: int, entries: list[dict],
 # Pipeline
 # --------------------------------------------------------------------------
 def _is_short(channel: Channel, meta: dict, entry: dict) -> bool:
-    if getattr(channel, "content_mode", "shorts") == "longform":
-        return False                                # never tag long-form as a Short
     dur = meta.get("duration") or entry.get("duration") or 0
     w = meta.get("width") or entry.get("width") or 0
     h = meta.get("height") or entry.get("height") or 0

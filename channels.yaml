@@ -3,45 +3,35 @@
 
 channels:
   - id: channel_4                         # unique; used in DB, logs, secret names
-    tiktok_username: "tawannai0"          # no @  -- ASMR restoration: abandoned cars, rusty tools, vintage objects "rust to riches"
-    youtube_channel_name: "Rust & Revival"   # <-- rebrand the YT channel to match (was "Whisker World")
+    tiktok_username: "tailbitpets"        # no @  -- AI cat vlogs (Loki & Max)
+    youtube_channel_name: "Whisker World"
     owner_email: "dkdhaker0000095@gmail.com"
 
     google_credentials_file: "credentials/channel_4_client_secret.json"
     oauth_token_file: "tokens/channel_4_token.json"
 
-    videos_per_day: 1
-    description_footer: "Restoration / ASMR. Footage from the original creator; commentary and edit are our own."
-    default_tags: [restoration, asmr restoration, rust removal, tool restoration, car restoration,
-                   abandoned car restoration, rusty tool restoration, satisfying restoration,
-                   restoration asmr, rust to riches, antique restoration, cleaning asmr,
-                   most satisfying video, diy restoration, before and after, oddly satisfying,
-                   restoration process, vintage restoration, metal restoration, full restoration]
-    youtube_category_id: "24"             # 24 Entertainment
+    videos_per_day: 2
+    description_footer: ""
+    default_tags: [cute animals, funny cats, cat vlog, kittens, adorable pets,
+                   wholesome animals, cute cat, pets of tiktok, animal shorts,
+                   funny pets, cat lover, heartwarming]
+    youtube_category_id: "15"             # 15 Pets & Animals
     enabled: true
     max_retry_days: 7
-
-    content_mode: longform                # no #Shorts tag, keep long videos
     shorts_max_seconds: 180
-    min_video_seconds: 60                 # restoration videos run minutes
-    max_video_seconds: 1800              # up to 30 min
-
     upload_mode: popular_only             # always pick the most-viewed unposted video
     max_download_candidates: 20
 
     use_ai_seo: true
-    seo_language: "en"
     edit:
       enabled: true
-      reframe: "fill"                    # portrait TikTok -> 16:9 1920x1080 fullscreen (like channel 9)
-      reframe_y_pct: 0.0
-      zoom_crop_pct: 1.5
-      speed: 1.02
+      zoom_crop_pct: 2.0
+      speed: 1.03
       hflip: false
-      fade_seconds: 0.4
+      fade_seconds: 0.25
       sharpen: true
       denoise: false
-      saturation: 1.04
+      saturation: 1.06
       contrast: 1.04
       loudnorm: true
       volume_gain_db: 0.0
@@ -50,20 +40,21 @@ channels:
         enabled: true
         image: "assets/brand_badge.png"
         corner: tr
-        width_pct: 10
+        width_pct: 11
         margin_pct: 3
-        opacity: 0.9
+        opacity: 0.92
 
     thumbnail:
       enabled: true
       hook_source: title
       position: bottom
-      accent_rgb: [217, 119, 6]
+      accent_rgb: [255, 138, 91]
       hook_templates:
-        - "RUST TO RICHES"
-        - "WAIT FOR THE END"
-        - "SO SATISFYING"
-        - "TOTALLY TRANSFORMED"
+        - "WAIT FOR IT"
+        - "SO CUTE"
+        - "HE DID WHAT?!"
+        - "YOU'LL SMILE"
 
-    slot_publish_times_utc:               # these ARE the cron fire times (IST = UTC + 5:30)
-      1: "15:30"                          # 9:00 PM IST
+    slot_publish_times_utc:               # these ARE the cron fire times
+      1: "16:00"                          # 12:00 PM US Eastern (US midday scroll) = 9:30 PM IST
+      2: "22:30"                          # 6:30 PM US Eastern (US evening prime)  = 4:00 AM IST

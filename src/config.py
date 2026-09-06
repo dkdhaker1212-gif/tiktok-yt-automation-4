@@ -39,9 +39,6 @@ class Channel:
     enabled: bool = True
     max_retry_days: int = 7
     shorts_max_seconds: int = 180
-    content_mode: str = "shorts"          # "shorts" | "longform"
-    min_video_seconds: int = 0            # skip candidates shorter than this
-    max_video_seconds: int = 3600         # skip candidates longer than this
     upload_mode: str = "popular_split"
     max_download_candidates: int = 20
     slot_publish_times_utc: dict = field(default_factory=dict)
