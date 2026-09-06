@@ -135,6 +135,41 @@ ALREADY_USED (do NOT repeat or lightly reword any of these):
 {recent}
 """
 
+_GEMINI_PROMPT_LONG = """You are a senior YouTube strategist for a faceless
+personal-finance / money-education channel. You are given frames and/or the
+audio of ONE long-form video (several minutes long).
+
+First silently work out the video's core topic and the single most useful
+takeaway (a saving tactic, a debt-payoff method, an investing concept, a
+common money mistake, etc.). Then write metadata that both ranks in search
+AND earns the click from someone who wants to fix their money.
+
+Write EVERYTHING in {language_name} - natural, native-sounding phrasing a real
+{language_name} speaker would use, NOT a literal translation. Universal tags
+like #finanzas may stay as real {language_name}-speaking creators write them.
+
+Return ONLY minified JSON with keys:
+"title","description","tags","hashtags","thumb_hook"
+- title: 45-90 chars, in {language_name}. Lead with the concrete benefit or a
+  curiosity gap (a number, a mistake, "cómo...", "lo que nadie te dice..."),
+  conversational, no ALL-CAPS words, no clickbait lies, and do NOT add
+  "#Shorts". It MUST be clearly different in wording AND structure from every
+  entry in ALREADY_USED - different hook, different phrasing.
+- description: in {language_name}, 3-5 short paragraphs. Paragraph 1 = a hook +
+  what the viewer will learn. Middle = 3-6 bullet lines starting with "- " for
+  the key ideas covered. Last line = a soft invite to subscribe. Then a blank
+  line and 8-10 hashtags on one line. No external links. <= 1500 chars.
+- tags: 18-25 lowercase search phrases in {language_name}, most specific first,
+  no "#". Mix broad money terms with long-tail questions.
+- hashtags: 8-10 strings starting with "#", lowercase, finance-relevant.
+- thumb_hook: 2-4 words in {language_name}, punchy, no emojis, no hashtags -
+  the big text on the thumbnail. Different from the title's opening words.
+
+SOURCE_CAPTION: {caption}
+ALREADY_USED (do NOT repeat or lightly reword any of these):
+{recent}
+"""
+
 
 def _run(cmd, timeout=180):
     return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
@@ -178,7 +213,8 @@ def _extract_frames(media_path, prefix, n=3):
     return out
 
 
-def _gemini(media_path, caption, base_tags, recent_titles, language="en"):
+def _gemini(media_path, caption, base_tags, recent_titles, language="en",
+            is_short=True):
     import base64 as _b64
     import time
     import urllib.error
@@ -194,7 +230,8 @@ def _gemini(media_path, caption, base_tags, recent_titles, language="en"):
     try:
         recent = "\n".join(f"- {t[:90]}" for t in (recent_titles or [])[:30]) or "(none)"
         lang_name = _LANG_NAMES.get(language, "English")
-        parts.append({"text": _GEMINI_PROMPT
+        prompt = _GEMINI_PROMPT if is_short else _GEMINI_PROMPT_LONG
+        parts.append({"text": prompt
                       .replace("{caption}", (caption or "(none)")[:400])
                       .replace("{recent}", recent)
                       .replace("{language_name}", lang_name)})
@@ -214,7 +251,8 @@ def _gemini(media_path, caption, base_tags, recent_titles, language="en"):
         body = json.dumps({
             "contents": [{"parts": parts}],
             "generationConfig": {"responseMimeType": "application/json",
-                                 "temperature": 0.9, "maxOutputTokens": 2200},
+                                 "temperature": 0.9,
+                                 "maxOutputTokens": 2200 if is_short else 3200},
         }).encode()
         url = (f"https://generativelanguage.googleapis.com/v1beta/models/"
                f"{_GEMINI_MODEL}:generateContent?key={key}")
@@ -329,6 +367,8 @@ def _fallback(caption, tiktok_tags, base_tags, is_short, recent_titles=None,
         [*base_tags, *[t.lower() for t in tiktok_tags], *kws,
          "shorts", "viral", "trending", "fyp"]))[:22]
     hs = (["#shorts"] if is_short else []) + _LANG_HASHTAGS.get(language, _LANG_HASHTAGS["en"])
+    if not is_short:
+        hs = [h for h in hs if h.lower() != "#shorts"]
     desc_lead = base if (_junk_cap or len(cap_clean) < 12) else cap_clean[:150]
     desc = "\n".join(filter(None, [
         desc_lead,
@@ -353,11 +393,12 @@ def generate(caption, tiktok_tags, base_tags, is_short, media_path=None,
     recent_titles = recent_titles or []
 
     if os.environ.get("GEMINI_API_KEY", "").strip() and media_path:
-        g = _gemini(media_path, caption, base_tags, recent_titles, language)
+        g = _gemini(media_path, caption, base_tags, recent_titles, language,
+                    is_short)
         if g and _is_dupe(g.title, recent_titles):        # one firm retry
             print("[seo] Gemini title collided; retrying once")
             g2 = _gemini(media_path, caption,
-                         base_tags, recent_titles + [g.title], language)
+                         base_tags, recent_titles + [g.title], language, is_short)
             if g2:
                 g = g2
         if g:
