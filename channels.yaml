@@ -3,8 +3,8 @@
 
 channels:
   - id: channel_4                         # unique; used in DB, logs, secret names
-    tiktok_username: "aspenessence"       # no @  -- handcrafted soap cutting/carving ASMR, colorful layers. 1M followers / 38.4M likes, real small business (self-care/soap), no YouTube channel -> no reused-content claim risk. Swapped in from the dead "Whisker World" AI-cat-vlog source (14 vids, max 67 views); real-cat content already covered by ch10 Cat Chaos Lab.
-    youtube_channel_name: "Suds and Slice"
+    tiktok_username: "tailbitpets"        # no @  -- AI cat vlogs (Loki & Max)
+    youtube_channel_name: "Whisker World"
     owner_email: "dkdhaker0000095@gmail.com"
 
     google_credentials_file: "credentials/channel_4_client_secret.json"
@@ -12,11 +12,10 @@ channels:
 
     videos_per_day: 2
     description_footer: ""
-    default_tags: [soap cutting, soap carving, asmr, oddly satisfying, satisfying,
-                   soap asmr, handmade soap, satisfying video, so satisfying, relaxing,
-                   soap cut, natural soap, self care, satisfying cutting, cutting asmr,
-                   soap slice, colorful soap, calming, sensory, spa]
-    youtube_category_id: "26"             # 26 Howto & Style (craft / self-care / ASMR)
+    default_tags: [cute animals, funny cats, cat vlog, kittens, adorable pets,
+                   wholesome animals, cute cat, pets of tiktok, animal shorts,
+                   funny pets, cat lover, heartwarming]
+    youtube_category_id: "15"             # 15 Pets & Animals
     enabled: true
     max_retry_days: 7
     shorts_max_seconds: 180
@@ -34,7 +33,7 @@ channels:
       fade_seconds: 0.25
       sharpen: true
       denoise: false
-      saturation: 1.08
+      saturation: 1.06
       contrast: 1.04
       loudnorm: true
       volume_gain_db: 0.0
@@ -56,12 +55,12 @@ channels:
       enabled: true
       hook_source: title
       position: bottom
-      accent_rgb: [235, 130, 156]
+      accent_rgb: [255, 138, 91]
       hook_templates:
-        - "SO SATISFYING"
-        - "WATCH IT SLICE"
-        - "PERFECT CUT"
-        - "ASMR SOAP"
+        - "WAIT FOR IT"
+        - "SO CUTE"
+        - "HE DID WHAT?!"
+        - "YOU'LL SMILE"
 
     slot_publish_times_utc:               # these ARE the cron fire times
       1: "16:00"                          # 12:00 PM US Eastern (US midday scroll) = 9:30 PM IST
