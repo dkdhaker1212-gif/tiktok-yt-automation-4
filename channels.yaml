@@ -3,8 +3,8 @@
 
 channels:
   - id: channel_4                         # unique; used in DB, logs, secret names
-    tiktok_username: "tailbitpets"        # no @  -- AI cat vlogs (Loki & Max)
-    youtube_channel_name: "Whisker World"
+    tiktok_username: "lana_miniatures"    # no @  -- miniature/tiny cooking ASMR, cinematic mini kitchen. 101K followers / 727K likes. Has a small YouTube channel (@LanaMiniatures, 2.9K subs) but it's ~1yr dormant (last upload 799 views) -- low practical collision risk, verified on both platforms. Swapped in from the dead "Whisker World" AI-cat-vlog source (14 vids, max 67 views); real-cat content already covered by ch10 Cat Chaos Lab.
+    youtube_channel_name: "Tiny Feast"
     owner_email: "dkdhaker0000095@gmail.com"
 
     google_credentials_file: "credentials/channel_4_client_secret.json"
@@ -12,10 +12,11 @@ channels:
 
     videos_per_day: 2
     description_footer: ""
-    default_tags: [cute animals, funny cats, cat vlog, kittens, adorable pets,
-                   wholesome animals, cute cat, pets of tiktok, animal shorts,
-                   funny pets, cat lover, heartwarming]
-    youtube_category_id: "15"             # 15 Pets & Animals
+    default_tags: [miniature cooking, tiny food, asmr cooking, mini kitchen, satisfying,
+                   oddly satisfying, tiny food asmr, miniature food, asmr, cooking asmr,
+                   mini food, tiny cooking, satisfying video, relaxing, cute food,
+                   dollhouse cooking, small food, calming, mini chef, so satisfying]
+    youtube_category_id: "26"             # 26 Howto & Style (mini-cooking / craft ASMR)
     enabled: true
     max_retry_days: 7
     shorts_max_seconds: 180
@@ -33,7 +34,7 @@ channels:
       fade_seconds: 0.25
       sharpen: true
       denoise: false
-      saturation: 1.06
+      saturation: 1.07
       contrast: 1.04
       loudnorm: true
       volume_gain_db: 0.0
@@ -55,13 +56,13 @@ channels:
       enabled: true
       hook_source: title
       position: bottom
-      accent_rgb: [255, 138, 91]
+      accent_rgb: [240, 165, 120]
       hook_templates:
-        - "WAIT FOR IT"
-        - "SO CUTE"
-        - "HE DID WHAT?!"
-        - "YOU'LL SMILE"
+        - "SO SATISFYING"
+        - "TINY BUT REAL"
+        - "WATCH THIS COOK"
+        - "MINI PERFECTION"
 
-    slot_publish_times_utc:               # these ARE the cron fire times
-      1: "16:00"                          # 12:00 PM US Eastern (US midday scroll) = 9:30 PM IST
+    slot_publish_times_utc:               # these ARE the cron fire times (IST = UTC + 5:30)
+      1: "22:30"                          # 4:00 AM IST -- US evening scroll (6:30 PM ET)
       2: "14:30"                          # 8:00 PM IST
