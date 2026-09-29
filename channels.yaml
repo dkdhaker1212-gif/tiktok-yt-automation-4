@@ -3,8 +3,8 @@
 
 channels:
   - id: channel_4                         # unique; used in DB, logs, secret names
-    tiktok_username: "lana_miniatures"    # no @  -- miniature/tiny cooking ASMR, cinematic mini kitchen. 101K followers / 727K likes. Has a small YouTube channel (@LanaMiniatures, 2.9K subs) but it's ~1yr dormant (last upload 799 views) -- low practical collision risk, verified on both platforms. Swapped in from the dead "Whisker World" AI-cat-vlog source (14 vids, max 67 views); real-cat content already covered by ch10 Cat Chaos Lab.
-    tiktok_username_backup: "asmr.usa.texas"  # no @ -- emergency-only fallback, used automatically if the primary source runs dry or every candidate it offers fails to post. 1.6M followers, broad relaxing ASMR/satisfying compilation, no YouTube found.
+    tiktok_username: "asmr.usa.texas"     # no @  -- broad relaxing/oddly-satisfying ASMR compilation. 1.6M followers / 32.8M likes, no YouTube found. Promoted to primary 2026-09-30: lana_miniatures was getting ~0 views after 3 weeks, moved to backup instead.
+    tiktok_username_backup: "lana_miniatures"  # no @ -- emergency-only fallback. 101K followers, miniature/tiny cooking ASMR. Has a small dormant YouTube channel (~1yr old, last upload 799 views) -- backup-only, not primary-grade.
     youtube_channel_name: "Tiny Feast"
     owner_email: "dkdhaker0000095@gmail.com"
 
