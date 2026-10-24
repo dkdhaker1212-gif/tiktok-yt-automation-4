@@ -3,8 +3,8 @@
 
 channels:
   - id: channel_4                         # unique; used in DB, logs, secret names
-    tiktok_username: "asmr.usa.texas"     # no @  -- broad relaxing/oddly-satisfying ASMR compilation. 1.6M followers / 32.8M likes, no YouTube found. Promoted to primary 2026-09-30: lana_miniatures was getting ~0 views after 3 weeks, moved to backup instead.
-    tiktok_username_backup: "lana_miniatures"  # no @ -- emergency-only fallback. 101K followers, miniature/tiny cooking ASMR. Has a small dormant YouTube channel (~1yr old, last upload 799 views) -- backup-only, not primary-grade.
+    tiktok_username: "theminiature_life"  # no @ -- 37.1K followers, miniature everyday-object cooking; same-handle YT only 27 subs. Promoted 2026-10-25: asmr.usa.texas gave ~2 views/video in October, moved to backup. sugarpeach1030 rejected (bio says original content, do not reupload).
+    tiktok_username_backup: "asmr.usa.texas"  # no @ -- emergency fallback: previous primary (broad ASMR compilation, 1.6M)
     youtube_channel_name: "Tiny Feast"
     owner_email: "dkdhaker0000095@gmail.com"
 
