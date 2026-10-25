@@ -3,8 +3,8 @@
 
 channels:
   - id: channel_4                         # unique; used in DB, logs, secret names
-    tiktok_username: "theminiature_life"  # no @ -- 37.1K followers, miniature everyday-object cooking; same-handle YT only 27 subs. Promoted 2026-10-25: asmr.usa.texas gave ~2 views/video in October, moved to backup. sugarpeach1030 rejected (bio says original content, do not reupload).
-    tiktok_username_backup: "asmr.usa.texas"  # no @ -- emergency fallback: previous primary (broad ASMR compilation, 1.6M)
+    tiktok_username: "doganddad"  # no @ -- 464.4K followers / 8.2M likes, pitbull puppy taste-testing / funny dog moments; same-handle YT only 344 subs/18 videos. 2026-10-25 trend pass: dog eating / funny dog moments = 3-33M views on YT Shorts this week. Replaces theminiature_life (~2 views).
+    tiktok_username_backup: "funnypets9001"  # no @ -- emergency fallback: 155.7K followers / 4.4M likes, funny dogs compilation; no YT channel found.
     youtube_channel_name: "Tiny Feast"
     owner_email: "dkdhaker0000095@gmail.com"
 
@@ -13,11 +13,10 @@ channels:
 
     videos_per_day: 2
     description_footer: ""
-    default_tags: [miniature cooking, tiny food, asmr cooking, mini kitchen, satisfying,
-                   oddly satisfying, tiny food asmr, miniature food, asmr, cooking asmr,
-                   mini food, tiny cooking, satisfying video, relaxing, cute food,
-                   dollhouse cooking, small food, calming, mini chef, so satisfying]
-    youtube_category_id: "26"             # 26 Howto & Style (mini-cooking / craft ASMR)
+    default_tags: [funny dog, dog eating, dogs, cute dog, pitbull, puppy, funny pets, dog moments,
+                   dog reaction, dog dad, tasting, dog food, pet shorts, funny animals, cute puppy,
+                   dog videos, adorable, wholesome, dog lovers, taste test]
+    youtube_category_id: "15"             # 15 Pets & Animals
     enabled: true
     max_retry_days: 7
     shorts_max_seconds: 180
@@ -59,10 +58,10 @@ channels:
       position: bottom
       accent_rgb: [240, 165, 120]
       hook_templates:
-        - "SO SATISFYING"
-        - "TINY BUT REAL"
-        - "WATCH THIS COOK"
-        - "MINI PERFECTION"
+        - "HE LOVED IT"
+        - "SO CUTE"
+        - "WAIT FOR IT"
+        - "DOG vs FOOD"
 
     slot_publish_times_utc:               # these ARE the cron fire times (IST = UTC + 5:30)
       1: "22:30"                          # 4:00 AM IST -- US evening scroll (6:30 PM ET)
